@@ -15,4 +15,12 @@ RCT_EXPORT_METHOD(addEvent:(NSString *)name details:(NSDictionary *)details)
   RCTLogInfo(@"Pretending to create an event %@ at %@ %@ %@", name, location, time, description);
 }
 
+RCT_REMAP_METHOD(findEvents,
+                findEventsWithResolver:(RCTPromiseResolveBlock)resolve
+                rejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSArray *events = @[@"event1", @"event2"];
+  resolve(events);
+}
+
 @end
