@@ -1,19 +1,18 @@
 #import "IosCalendar.h"
+#import <React/RCTLog.h>
+#import <React/RCTConvert.h>
 
 @implementation IosCalendar
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE();
 
-// Example method
-// See // https://facebook.github.io/react-native/docs/native-modules-ios
-RCT_REMAP_METHOD(multiply,
-                 multiplyWithA:(nonnull NSNumber*)a withB:(nonnull NSNumber*)b
-                 withResolver:(RCTPromiseResolveBlock)resolve
-                 withRejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(addEvent:(NSString *)name details:(NSDictionary *)details)
 {
-  NSNumber *result = @([a floatValue] * [b floatValue]);
+  NSString *location = [RCTConvert NSString:details[@"location"]];
+  NSDate *time = [RCTConvert NSDate:details[@"time"]];
+  NSString *description = [RCTConvert NSString:details[@"description"]];
 
-  resolve(result);
+  RCTLogInfo(@"Pretending to create an event %@ at %@ %@ %@", name, location, time, description);
 }
 
 @end

@@ -3,15 +3,17 @@ import { StyleSheet, View, Text } from 'react-native';
 import IosCalendar from 'react-native-ios-calendar';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
   React.useEffect(() => {
-    IosCalendar.multiply(3, 7).then(setResult);
+    IosCalendar.addEvent('Birthday Party', {
+      location: '4 Privet Drive, Surrey',
+      time: Date.now(),
+      description: 'Everyone invited!',
+    });
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result</Text>
     </View>
   );
 }
